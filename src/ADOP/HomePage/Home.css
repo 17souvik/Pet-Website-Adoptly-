@@ -1,24 +1,565 @@
-.animal {
-
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /* Full-screen header */
+  .header {
     display: flex;
-    flex-wrap: wrap;
-    margin: 10px;
-
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 220vh; /* Full height of the viewport */
+    overflow: hidden;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: rgba(255, 255, 255, 0) !important; /* Force transparency */
+    backdrop-filter: none; /* Ensure no blur effect is applied */
+    box-shadow: none; /* Remove any shadow that could be appearing */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
     
+  .logo {
+    height: 60px;
+    width: 60px;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: right;
+    padding-left: 850px;
+    list-style: none;
+  }
+  
+  .nav-links li {
+    margin: 0 15px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: #ff5722;
+  }
+  /* Login Button Styling */
+.login-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-left: 20px; /* Space between nav-links and the button */
 }
-.animal_card{
-    height: fit-content;
-    width: fit-content;
-    border: 1px solid black;
-    margin: 10px;
+
+.login-btn:hover {
+  background-color: #e64a19; /* Slightly darker hover effect */
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+@media (max-width: 768px) {
+  .login-btn {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
+  
+  .menu-toggle {
+    display: none; /* Hide menu toggle by default */
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .hero {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.animal_card img {
-    height: 100px;
-    width: 100px;
+    text-align: center;
+    background-color: transparent;
+    padding: 20px;
+    height: 100%; /* Ensure the hero section fills the screen */
+  }
+  
+  .hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .adopt-btn,
+  .foster-btn {
+    padding: 15px 30px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+  }
+  
+  .adopt-btn {
+    background-color: #ff5722;
+    color: white;
+  }
+  
+  .foster-btn {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .adopt-btn:hover,
+  .foster-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #2196f3;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .hero h2 {
+      font-size: 2rem;
+    }
+  
+    .hero p {
+      font-size: 1rem;
+    }
+  
+    .adopt-btn,
+    .foster-btn {
+      padding: 12px 20px;
+      font-size: 0.9rem;
+    }
+  }
+  /* Slider Background Styling */
+.hero {
+    
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+  }
+  
+  /* Pagination Dot Controls */
+  .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dot.active {
+    background-color: #2196f3;
+  }
+  /* Fix height of the hero section */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 600px; /* Fixed height to prevent resizing */
+    background-color: transparent;
+    background-size: cover; /* Ensure background covers the container */
+    background-position: center; /* Center the background image */
+    transition: background-image 0.8s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Ensure content inside the hero does not affect layout */
+  .hero-content {
+    display: flex;
+    padding-top: 100px;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Keep text above the background */
+  }
+  
+  /* Pagination dots remain at the bottom and consistent */
+  .pagination {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .dot {
+    width: 15px;
+    height: 15px;
+    background-color: #f2f6f6;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #2196f3;
+  }
+.main_contener{
+    height: 100%;
+    width: 100%;
+}  
+/* Style for the card */
+.card {
+    position: absolute;
+    top: 50%;
+    left: 3%; /* Adjust left value for desired spacing */
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);; /* Slight transparency for elegance */
+    
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%; /* Adjust width to fit content */
+    z-index: 2; /* Ensure it stays above the background */
+
+    /* width: auto; Automatically adjusts to the content */
+    max-width: 90%; /* Ensures it doesn't overflow the screen */
+    /* height: auto; Automatically adjusts to the content */
+    max-height: 90%; /* Prevents it from exceeding the viewport height */
+    overflow-y: auto; /* Adds scroll if content overflows */
+    z-index: 2; /* Keeps it above the background */
+  }
+  
+  /* Ensure content inside the card is properly aligned */
+  .card .description {
+    text-align: left;
+  }
+  
+  .card h2 {
+    font-size: 1.8rem;
+    color: orangered;
+    margin-bottom: 15px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #0c0c0c;
+    margin-bottom: 20px;
+  }
+  
+  .card .buttons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .card .adopt-btn,
+  .card .foster-btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+  }
+  
+  .card .adopt-btn {
+    background-color: #ff5722;
+    color: white;
+  }
+  
+  .card .foster-btn {
+    color: #2196f3;
+    background-color: white;
+    /* border: #2196f3; */
+    /* border-color: #2196f3; */
+  }
+  
+  .card .adopt-btn:hover,
+  .card .foster-btn:hover {
+    transform: scale(1.05);
+  }
+  .card .foster-btn:hover{
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  /* Update the hero section to fit the new layout */
+  .hero {
+    position: relative; /* Allow card to be absolutely positioned inside */
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    /* transition: background-image 0.8s ease-in-out; */
+    height: 600px; /* Fixed height to prevent resizing */
+    background-size: cover; /* Ensure background covers the container */
+    background-position: center; /* Center the background image */
+    transition:  none; /* Disable the default smooth transition */
+    animation: slide-right-to-left 4s ease-in-out infinite;
+  }
+  /* Trigger animation only when class is added */
+.hero.slide-transition {
+    height: 100%;
+    width: 100%;
+    animation: slide-right-to-left 1s ease-in-out;
+  }
+  
+  /* Keyframes for right-to-left sliding effect */
+@keyframes slide-right-to-left {
+    0% {
+      background-position: 100% center;
+    }
+    50% {
+      background-position: 50% center;
+    }
+    100% {
+      background-position: 0% center;
+    }
+  }
+  
+  /* Ensure the pagination dots stay at the bottom */
+  .pagination {
+    position: absolute;
+    top: 550px;
+    /* bottom: 10px; */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  .about-shelter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    background-color: #f9f9f9; /* Optional background color */
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    gap: 30px; /* Space between image and text */
+    flex-wrap: wrap; /* Ensure it wraps on smaller screens */
+  }
+  
+  .about-image {
+    flex: 1;
+    max-width: 500px; /* Limit image size */
+    width: 100%; /* Responsive scaling */
+    object-fit: contain; /* Keeps the aspect ratio */
+    border-radius: 10px; /* Optional: Rounded corners */
+  }
+  
+  .about-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  /* Media Queries for smaller devices */
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column; /* Stack image and text */
+      text-align: center;
+    }
+  
+    .about-image {
+      max-width: 100%; /* Allow full width on smaller screens */
+    }
+  
+    .about-text h2 {
+      font-size: 2rem;
+    }
+  
+    .about-text p {
+      font-size: 0.95rem;
+    }
+  }
+  
    
     
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px; /* Reduced padding */
+    background-color: rgba(255, 255, 255, 0) !important; /* Keep transparency */
+    backdrop-filter: none;
+    box-shadow: none;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    height: 55px; /* Slightly smaller logo */
+    width: 60px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: right;
+    padding-left: 750px; /* Adjusted for spacing */
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 10px; /* Reduced spacing between links */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.1rem; /* Slightly smaller font */
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ff5722;
+}
+
+.login-btn {
+    padding: 9px 15px; /* Slightly smaller button */
+    font-size: 0.9rem; /* Reduced font size */
+    margin-left: 0px; /* Adjusted spacing from nav-links */
+}
+
+
+/*card style*/
+.animal {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center align the cards */
+    text-decoration: none;
+}
+
+.animal_card {
+    height: auto;
+    width: 200px; /* Fixed width for uniform size */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    background: #fff; /* Clean white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    cursor: pointer; /* Indicate it's clickable */
+    text-decoration: none;
+}
+
+.animal_card:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+.animal_card img {
+    height: 150px; /* Larger image for better visibility */
+    width: 150px;
+    object-fit: cover; /* Ensure the image doesn't stretch */
+    border-radius: 50%; /* Circular images for a polished look */
+    margin-top: 10px;
+    border: 5px solid #ff5722; /* Add a pop of color */
+
+}
+
+.animal_card i {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0 5px 0; /* Space above and below the text */
+    font-style: normal; /* Regular font style */
+    text-decoration: none;
+}
+
+.animal_card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+    padding: 0 10px; /* Ensure text doesn’t touch card edges */
+    text-decoration: none;
+    
+}
+
+.animal_card:hover img {
+    border-color: #2196f3; /* Change border color on hover */
+}
+.animal_card i p {
+    text-decoration: none; /* Removes underline from all anchor tags inside .animal_card */
+    color: inherit; /* Ensures the anchor tag text inherits color from its parent */
+}
+
+.animal_card i p:hover {
+    text-decoration: none; /* Ensures no underline appears on hover */
 }
