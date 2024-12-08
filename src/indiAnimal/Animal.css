@@ -51,6 +51,7 @@
   .animal-card .info p.price {
     font-weight: bold;
     color: #ff6347;
+    margin-left: 340px;
   }
   
   .button-container {

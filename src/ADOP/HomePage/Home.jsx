@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, navigate } from "react-router-dom";
 import AllData from "../Data/Data";
 import './Home.css';
 
@@ -121,10 +121,14 @@ const changeSlide = (index) => {
                                     <h2>{sliderData[currentSlide].title}</h2>
                                     <p>{sliderData[currentSlide].description}</p>
                                     <div className="buttons">
-                                        <button className="adopt-btn">{sliderData[currentSlide].adoptText}</button>
-                                        <button className="foster-btn">{sliderData[currentSlide].fosterText}</button>
-                                    </div>
+                                    <button
+                                        className="adopt-btn"
+                                        onClick={() => navigate('/adoptly/dog/2')}
+                                    >
+                                        {sliderData[currentSlide].adoptText}
+                                    </button>
                                 </div>
+                            </div>
                             </div>
                         </div>
                         <div className="pagination">

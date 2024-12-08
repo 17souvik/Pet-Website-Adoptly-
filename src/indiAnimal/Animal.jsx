@@ -20,7 +20,7 @@ export default function Animal() {
   };
 
   const handleSeeMoreClick = () => {
-    // navigate(-1);
+    navigate(-1);
   };
 
   return (
