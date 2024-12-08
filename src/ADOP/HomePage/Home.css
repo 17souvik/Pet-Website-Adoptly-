@@ -1,0 +1,24 @@
+.animal {
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+
+    
+}
+.animal_card{
+    height: fit-content;
+    width: fit-content;
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.animal_card img {
+    height: 100px;
+    width: 100px;
+   
+    
+}
